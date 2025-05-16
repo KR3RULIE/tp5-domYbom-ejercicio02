@@ -58,13 +58,64 @@ class Persona {
 const tomarDatos = (e) => {
   e.preventDefault();
   // buscar inputs
-  const nombre = document.querySelector("#nombre").value
-  console.log(nombre)
+  const nombre = document.querySelector("#nombre").value;
+  const edad = parseInt(document.querySelector("#edad").value);
+  const dni = document.querySelector("#dni").value;
+  const sexo = document.querySelector("#sexo").value;
+  const peso = parseFloat(document.querySelector("#peso").value);
+  const altura = parseFloat(document.querySelector("#altura").value);
+  const añoDeNacimiento = document.querySelector("#añoDeNacimiento").value;
   // asignar inputs
-}
+  const personaCreada = new Persona(
+    nombre,
+    edad,
+    dni,
+    sexo,
+    peso,
+    altura,
+    añoDeNacimiento
+  );
+  // necesito tomar el texto (nombre) del input
+  const inputNombre = document.getElementById("nombre").value;
+  // necesito el div padre para agregar un item hijo que es una p
+  const div = document.querySelector(".justify-content-stard");
+  // 🔧 Crear un contenedor específico para esta persona
+  const contenedorPersona = document.createElement("div");
+  contenedorPersona.classList.add("mb-3");
+  // necesito agregar una "p" con el texto del input, tambien los botones
+  const p = document.createElement(`p`);
+  const boton1 = document.createElement("button");
+  const boton2 = document.createElement("button");
+
+  p.textContent = "👨‍👨‍👧‍👦Persona: " + inputNombre;
+
+  boton1.textContent = "Mostrar generación";
+  boton2.textContent = "¿Es mayor de edad?";
+
+  boton1.classList.add("btn", "btn-primary", "me-2", "mt-2");
+  boton2.classList.add("btn", "btn-success", "mt-2");
+  // agregar la "p" y los botones a su padre
+  contenedorPersona.appendChild(p);
+  contenedorPersona.appendChild(boton1);
+  contenedorPersona.appendChild(boton2);
+  div.appendChild(contenedorPersona);
+  // resetear formulario
+  formulario.reset();
+};
+
+const mostrarGeneracion = (añoDeNacimiento) => {
+  alert(`${personaCreada.mostrarGenracion(añoDeNacimiento)}`);
+};
+
+const esMayorDeEdad = (edad) => {
+  alert(`${personaCreada.esMayorDeEdad(edad)}`);
+};
 
 // variables
 const formulario = document.getElementById("miFormulario");
-
+const btnMostrarGeneracion = document.getElementsByClassName("btn-primary");
+const btnEsMayorDeEdad = document.getElementsByClassName("btn-success");
 // manejador de eventos
 formulario.addEventListener(`submit`, tomarDatos);
+btnMostrarGeneracion.addEventListener("click", mostrarGeneracion);
+btnEsMayorDeEdad.addEventListener("click", esMayorDeEdad);
