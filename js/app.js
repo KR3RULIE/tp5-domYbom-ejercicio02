@@ -39,26 +39,34 @@ class Persona {
   }
 
   mostrarDatos() {
-    const contenedor = document.createElement("ul");
+    const existente = document.querySelector(".list-group-item");
+    console.log(existente);
+    if (existente != null) {
+      existente.remove(); // lo borramos
+    }
 
-    const datos = [
-      `Nombre: ${this.nombre}`,
-      `Edad: ${this.edad}`,
-      `DNI: ${this.dni}`,
-      `Sexo: ${this.sexo}`,
-      `Peso: ${this.peso}kg`,
-      `Altura: ${this.altura}cm`,
-      `Año de nacimiento: ${this.añoDeNacimiento}`,
-    ];
+    if (existente === null) {
+      const contenedor = document.createElement("ul");
+      contenedor.classList.add("list-group-item");
+      const datos = [
+        `Nombre: ${this.nombre}`,
+        `Edad: ${this.edad}`,
+        `DNI: ${this.dni}`,
+        `Sexo: ${this.sexo}`,
+        `Peso: ${this.peso}kg`,
+        `Altura: ${this.altura}cm`,
+        `Año de nacimiento: ${this.añoDeNacimiento}`,
+      ];
 
-    datos.forEach((dato) => {
-      const li = document.createElement("li");
-      li.textContent = dato;
-      contenedor.appendChild(li);
-    });
+      datos.forEach((dato) => {
+        const li = document.createElement("li");
+        li.textContent = dato;
+        contenedor.appendChild(li);
+      });
 
-    // Agregalo a algún contenedor visible del HTML, por ejemplo:
-    document.querySelector(".justify-content-start").appendChild(contenedor);
+      // Agregalo a algún contenedor visible del HTML, por ejemplo:
+      document.querySelector(".justify-content-start").appendChild(contenedor);
+    }
   }
 }
 
@@ -117,7 +125,7 @@ const tomarDatos = (e) => {
   contenedorPersona.appendChild(boton3);
   div.appendChild(contenedorPersona);
   // resetear formulario
-  // formulario.reset();
+  formulario.reset();
 };
 
 const mostrarGeneracion = () => {
