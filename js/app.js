@@ -9,36 +9,32 @@ class Persona {
     this.añoDeNacimiento = añoDeNacimiento;
   }
 
-  mostrarGenracion(añoDeNacimiento) {
-    if (añoDeNacimiento >= 1994 && añoDeNacimiento <= 2010) {
-      document.writeln("Perteneces a la generación Z <br>");
-      document.writeln("Su rasgo caracteristico es: 😋 Irreverencia <br>");
-    } else if (añoDeNacimiento >= 1983 && añoDeNacimiento <= 1993) {
-      document.writeln("Perteneces a la generación Y (millenials) <br>");
-      document.writeln("Su rasgo caracteristico es: 😖 Frustración <br>");
-    } else if (añoDeNacimiento >= 1969 && añoDeNacimiento <= 1980) {
-      document.writeln("Perteneces a la generación X <br>");
-      document.writeln(
-        "Su rasgo caracteristico es: 😎 Obsesión por el éxito <br>"
-      );
-    } else if (añoDeNacimiento >= 1949 && añoDeNacimiento <= 1968) {
-      document.writeln("Perteneces a la generación Baby Boom <br>");
-      document.writeln("Su rasgo caracteristico es: 🤑 Ambición <br>");
-    } else if (añoDeNacimiento >= 1930 && añoDeNacimiento <= 1948) {
-      document.writeln(
-        "Perteneces a la Silent Generation (los niños de la posguerra) <br>"
-      );
-      document.writeln("Su rasgo caracteristico es: 😐 Austeridad <br>");
+  mostrarGeneracion() {
+    if (this.añoDeNacimiento >= 1994 && this.añoDeNacimiento <= 2010) {
+      alert("Perteneces a la generación Z");
+      alert("Su rasgo caracteristico es: 😋 Irreverencia");
+    } else if (this.añoDeNacimiento >= 1983 && this.añoDeNacimiento <= 1993) {
+      alert("Perteneces a la generación Y (millenials)");
+      alert("Su rasgo caracteristico es: 😖 Frustración");
+    } else if (this.añoDeNacimiento >= 1969 && this.añoDeNacimiento <= 1980) {
+      alert("Perteneces a la generación X");
+      alert("Su rasgo caracteristico es: 😎 Obsesión por el éxito");
+    } else if (this.añoDeNacimiento >= 1949 && this.añoDeNacimiento <= 1968) {
+      alert("Perteneces a la generación Baby Boom");
+      alert("Su rasgo caracteristico es: 🤑 Ambición");
+    } else if (this.añoDeNacimiento >= 1930 && this.añoDeNacimiento <= 1948) {
+      alert("Perteneces a la Silent Generation (los niños de la posguerra)");
+      alert("Su rasgo caracteristico es: 😐 Austeridad");
     } else {
-      document.writeln("No se hayó ninguna generación");
+      alert("No se hayó ninguna generación");
     }
   }
 
-  esMayorDeEdad(edad) {
-    if (edad >= 18) {
-      document.writeln("Es mayor de edad");
+  esMayorDeEdad() {
+    if (this.edad >= 18) {
+      alert("Es mayor de edad");
     } else {
-      document.writeln("No es mayor de edad");
+      alert("No es mayor de edad");
     }
   }
 
@@ -64,9 +60,11 @@ const tomarDatos = (e) => {
   const sexo = document.querySelector("#sexo").value;
   const peso = parseFloat(document.querySelector("#peso").value);
   const altura = parseFloat(document.querySelector("#altura").value);
-  const añoDeNacimiento = document.querySelector("#añoDeNacimiento").value;
+  const añoDeNacimiento = parseInt(
+    document.querySelector("#añoDeNacimiento").value
+  );
   // asignar inputs
-  const personaCreada = new Persona(
+  personaCreada = new Persona(
     nombre,
     edad,
     dni,
@@ -78,20 +76,23 @@ const tomarDatos = (e) => {
   // necesito tomar el texto (nombre) del input
   const inputNombre = document.getElementById("nombre").value;
   // necesito el div padre para agregar un item hijo que es una p
-  const div = document.querySelector(".justify-content-stard");
+  const div = document.querySelector(".justify-content-start");
   // 🔧 Crear un contenedor específico para esta persona
   const contenedorPersona = document.createElement("div");
   contenedorPersona.classList.add("mb-3");
-  // necesito agregar una "p" con el texto del input, tambien los botones
+  // creo la etiqueta p (nombre de la persona) y los botones (funciones)
   const p = document.createElement(`p`);
   const boton1 = document.createElement("button");
   const boton2 = document.createElement("button");
-
+  // creo los eventos de manera dianamica
+  boton1.addEventListener("click", () => personaCreada.mostrarGeneracion());
+  boton2.addEventListener("click", () => personaCreada.esMayorDeEdad());
+  // agrego el texto a la etiqueta p mas el nombre de la persona
   p.textContent = "👨‍👨‍👧‍👦Persona: " + inputNombre;
-
+  // agrego texto a los botones
   boton1.textContent = "Mostrar generación";
   boton2.textContent = "¿Es mayor de edad?";
-
+  // agrego clases a los botones dinamicos
   boton1.classList.add("btn", "btn-primary", "me-2", "mt-2");
   boton2.classList.add("btn", "btn-success", "mt-2");
   // agregar la "p" y los botones a su padre
@@ -100,22 +101,21 @@ const tomarDatos = (e) => {
   contenedorPersona.appendChild(boton2);
   div.appendChild(contenedorPersona);
   // resetear formulario
-  formulario.reset();
+  // formulario.reset();
 };
 
-const mostrarGeneracion = (añoDeNacimiento) => {
-  alert(`${personaCreada.mostrarGenracion(añoDeNacimiento)}`);
+const mostrarGeneracion = () => {
+  personaCreada.mostrarGeneracion();
 };
 
-const esMayorDeEdad = (edad) => {
-  alert(`${personaCreada.esMayorDeEdad(edad)}`);
+const esMayorDeEdad = () => {
+  personaCreada.esMayorDeEdad();
 };
 
 // variables
 const formulario = document.getElementById("miFormulario");
 const btnMostrarGeneracion = document.getElementsByClassName("btn-primary");
 const btnEsMayorDeEdad = document.getElementsByClassName("btn-success");
+let personaCreada;
 // manejador de eventos
 formulario.addEventListener(`submit`, tomarDatos);
-btnMostrarGeneracion.addEventListener("click", mostrarGeneracion);
-btnEsMayorDeEdad.addEventListener("click", esMayorDeEdad);
