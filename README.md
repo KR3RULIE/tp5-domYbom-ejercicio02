@@ -46,8 +46,8 @@ La interfaz está creada con **Bootstrap 5**. Cuenta con:
 ## 📦 Cómo clonar este repositorio
 
 ```bash
-git clone https://github.com/KR3RULIE/tp5-domYbom-ejercicio01
-````
+git clone https://github.com/KR3RULIE/tp5-domYbom-ejercicio02
+```
 
 ## 🛠️ Tecnologías utilizadas
 
