@@ -29,17 +29,38 @@
         <form id="miFormulario">
           <div class="mb-3">
             <label for="nombre" class="form-label">Ingresar el nombre:</label>
-            <input type="text" class="form-control" id="nombre" />
+            <input
+              type="text"
+              class="form-control"
+              id="nombre"
+              minlength="2"
+              maxlength="55"
+              required
+            />
           </div>
 
           <div class="mb-3">
             <label for="edad" class="form-label">Ingresar la edad:</label>
-            <input type="number" class="form-control" id="edad" />
+            <input
+              type="number"
+              class="form-control"
+              id="edad"
+              min="0"
+              max="150"
+              required
+            />
           </div>
 
           <div class="mb-3">
             <label for="dni" class="form-label">Ingresar la DNI:</label>
-            <input type="text" class="form-control" id="dni" />
+            <input
+              type="text"
+              class="form-control"
+              id="dni"
+              minlength="7"
+              maxlength="8"
+              required
+            />
           </div>
 
           <div class="mb-3">
@@ -52,6 +73,9 @@
               id="sexo"
               placeholder="Sexo"
               list="listaSexo"
+              minlength="5"
+              maxlength="6"
+              required
             />
             <datalist id="listaSexo">
               <option value="Hombre"></option>
@@ -60,20 +84,45 @@
           </div>
 
           <div class="mb-3">
-            <label for="peso" class="form-label">Ingresar el peso:</label>
-            <input type="number" class="form-control" id="peso" />
+            <label for="peso" class="form-label"
+              >Ingresar el peso: (kilogramos)</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="peso"
+              min="0"
+              max="500"
+              required
+            />
           </div>
 
           <div class="mb-3">
-            <label for="altura" class="form-label">Ingresar la altura:</label>
-            <input type="number" class="form-control" id="altura" />
+            <label for="altura" class="form-label"
+              >Ingresar la altura: (centimetros)</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              id="altura"
+              min="1"
+              max="250"
+              required
+            />
           </div>
 
           <div class="mb-3">
             <label for="añoDeNacimiento" class="form-label"
               >Ingresar el año de nacimiento:</label
             >
-            <input type="date" class="form-control" id="añoDeNacimiento" />
+            <input
+              type="date"
+              class="form-control"
+              id="añoDeNacimiento"
+              min="1900"
+              max="2025"
+              required
+            />
           </div>
 
           <div class="text-center">
