@@ -39,15 +39,26 @@ class Persona {
   }
 
   mostrarDatos() {
-    document.writeln(`<ul>`);
-    document.writeln(`<li>Nombre: ${this.nombre}</li>`);
-    document.writeln(`<li>Edad: ${this.edad}</li>`);
-    document.writeln(`<li>DNI: ${this.dni}</li>`);
-    document.writeln(`<li>Sexo: ${this.sexo}</li>`);
-    document.writeln(`<li>Peso: ${this.peso}</li>`);
-    document.writeln(`<li>Altura: ${this.altura}</li>`);
-    document.writeln(`<li>Año de nacimiento: ${this.añoDeNacimiento}</li>`);
-    document.writeln(`</ul>`);
+    const contenedor = document.createElement("ul");
+
+    const datos = [
+      `Nombre: ${this.nombre}`,
+      `Edad: ${this.edad}`,
+      `DNI: ${this.dni}`,
+      `Sexo: ${this.sexo}`,
+      `Peso: ${this.peso}kg`,
+      `Altura: ${this.altura}cm`,
+      `Año de nacimiento: ${this.añoDeNacimiento}`,
+    ];
+
+    datos.forEach((dato) => {
+      const li = document.createElement("li");
+      li.textContent = dato;
+      contenedor.appendChild(li);
+    });
+
+    // Agregalo a algún contenedor visible del HTML, por ejemplo:
+    document.querySelector(".justify-content-start").appendChild(contenedor);
   }
 }
 
@@ -84,21 +95,26 @@ const tomarDatos = (e) => {
   const p = document.createElement(`p`);
   const boton1 = document.createElement("button");
   const boton2 = document.createElement("button");
+  const boton3 = document.createElement("button");
   // creo los eventos de manera dianamica
   boton1.addEventListener("click", () => personaCreada.mostrarGeneracion());
   boton2.addEventListener("click", () => personaCreada.esMayorDeEdad());
+  boton3.addEventListener("click", () => personaCreada.mostrarDatos());
   // agrego el texto a la etiqueta p mas el nombre de la persona
   p.textContent = "👨‍👨‍👧‍👦Persona: " + inputNombre;
   // agrego texto a los botones
   boton1.textContent = "Mostrar generación";
   boton2.textContent = "¿Es mayor de edad?";
+  boton3.textContent = "Mostrar datos";
   // agrego clases a los botones dinamicos
   boton1.classList.add("btn", "btn-primary", "me-2", "mt-2");
-  boton2.classList.add("btn", "btn-success", "mt-2");
+  boton2.classList.add("btn", "btn-success", "me-2", "mt-2");
+  boton3.classList.add("btn", "btn-info", "mt-2");
   // agregar la "p" y los botones a su padre
   contenedorPersona.appendChild(p);
   contenedorPersona.appendChild(boton1);
   contenedorPersona.appendChild(boton2);
+  contenedorPersona.appendChild(boton3);
   div.appendChild(contenedorPersona);
   // resetear formulario
   // formulario.reset();
@@ -114,8 +130,6 @@ const esMayorDeEdad = () => {
 
 // variables
 const formulario = document.getElementById("miFormulario");
-const btnMostrarGeneracion = document.getElementsByClassName("btn-primary");
-const btnEsMayorDeEdad = document.getElementsByClassName("btn-success");
 let personaCreada;
 // manejador de eventos
 formulario.addEventListener(`submit`, tomarDatos);
