@@ -96,7 +96,7 @@ const tomarDatos = (e) => {
   const div = document.querySelector("#divPadre");
   // 🔧 Crear un contenedor específico para esta persona
   const contenedorPersona = document.createElement("div");
-  contenedorPersona.classList.add("mb-3");
+  contenedorPersona.classList.add("mb-3", "p-3");
   // creo la etiqueta p (nombre de la persona) y los botones (funciones)
   const p = document.createElement(`p`);
   const boton1 = document.createElement("button");
