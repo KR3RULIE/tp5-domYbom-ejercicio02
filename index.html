@@ -23,118 +23,130 @@
   </head>
   <body>
     <main>
-      <section
-        class="d-flex flex-column justify-content-center align-items-center"
-      >
-        <form id="miFormulario">
-          <div class="mb-3">
-            <label for="nombre" class="form-label">Ingresar el nombre:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="nombre"
-              minlength="2"
-              maxlength="55"
-              required
+      <section class="container">
+        <h1 class="text-center my-5">Formulario de datos personales</h1>
+        <div class="row">
+          <div class="col bg-light-subtle py-5 rounded">
+            <form id="miFormulario">
+              <div class="mb-3">
+                <label for="nombre" class="form-label"
+                  >Ingresar el nombre:</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="nombre"
+                  minlength="2"
+                  maxlength="55"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="edad" class="form-label">Ingresar la edad:</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="edad"
+                  min="0"
+                  max="150"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="dni" class="form-label">Ingresar la DNI:</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="dni"
+                  minlength="7"
+                  maxlength="8"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="sexo" class="form-label"
+                  >Ingresar el sexo (Hombre o Mujer):</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="sexo"
+                  placeholder="Sexo"
+                  list="listaSexo"
+                  minlength="5"
+                  maxlength="6"
+                  required
+                />
+                <datalist id="listaSexo">
+                  <option value="Hombre"></option>
+                  <option value="Mujer"></option>
+                </datalist>
+              </div>
+
+              <div class="mb-3">
+                <label for="peso" class="form-label"
+                  >Ingresar el peso: (kilogramos)</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="peso"
+                  min="0"
+                  max="500"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="altura" class="form-label"
+                  >Ingresar la altura: (centimetros)</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  id="altura"
+                  min="1"
+                  max="250"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="añoDeNacimiento" class="form-label"
+                  >Ingresar el año de nacimiento:</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="añoDeNacimiento"
+                  min="1900"
+                  max="2025"
+                  required
+                />
+              </div>
+
+              <div class="text-center">
+                <button type="submit" class="btn btn-success w-100">
+                  Enviar
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="col d-none d-md-block">
+            <img
+              class="img-fluid h-100 w-100"
+              src="./img/mujerYhombre.png"
+              alt="Es una imageon con icono de un hombre y una mujer"
             />
           </div>
-
-          <div class="mb-3">
-            <label for="edad" class="form-label">Ingresar la edad:</label>
-            <input
-              type="number"
-              class="form-control"
-              id="edad"
-              min="0"
-              max="150"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="dni" class="form-label">Ingresar la DNI:</label>
-            <input
-              type="text"
-              class="form-control"
-              id="dni"
-              minlength="7"
-              maxlength="8"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="sexo" class="form-label"
-              >Ingresar el sexo (Hombre o Mujer):</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="sexo"
-              placeholder="Sexo"
-              list="listaSexo"
-              minlength="5"
-              maxlength="6"
-              required
-            />
-            <datalist id="listaSexo">
-              <option value="Hombre"></option>
-              <option value="Mujer"></option>
-            </datalist>
-          </div>
-
-          <div class="mb-3">
-            <label for="peso" class="form-label"
-              >Ingresar el peso: (kilogramos)</label
-            >
-            <input
-              type="number"
-              class="form-control"
-              id="peso"
-              min="0"
-              max="500"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="altura" class="form-label"
-              >Ingresar la altura: (centimetros)</label
-            >
-            <input
-              type="number"
-              class="form-control"
-              id="altura"
-              min="1"
-              max="250"
-              required
-            />
-          </div>
-
-          <div class="mb-3">
-            <label for="añoDeNacimiento" class="form-label"
-              >Ingresar el año de nacimiento:</label
-            >
-            <input
-              type="date"
-              class="form-control"
-              id="añoDeNacimiento"
-              min="1900"
-              max="2025"
-              required
-            />
-          </div>
-
-          <div class="text-center">
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </div>
-        </form>
+        </div>
       </section>
 
-      <section class="py-5 bg-body">
-        <div class="container bg-light text-dark rounded py-1">
-          <div class="d-flex flex-column justify-content-start"></div>
-        </div>
+      <section class="container bg-light-subtle rounded">
+        <div id="divPadre"></div>
       </section>
     </main>
     <script src="./js/app.js"></script>

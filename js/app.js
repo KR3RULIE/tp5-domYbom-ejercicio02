@@ -38,16 +38,15 @@ class Persona {
     }
   }
 
-  mostrarDatos() {
-    const existente = document.querySelector(".list-group-item");
-    console.log(existente);
-    if (existente != null) {
-      existente.remove(); // lo borramos
-    }
+  mostrarDatos(contenedorPadre) {
+    const existente = contenedorPadre.querySelector("#datosPersona");
 
-    if (existente === null) {
+    if (existente) {
+      existente.remove();
+    } else {
       const contenedor = document.createElement("ul");
-      contenedor.classList.add("list-group-item");
+      contenedor.id = "datosPersona";
+
       const datos = [
         `Nombre: ${this.nombre}`,
         `Edad: ${this.edad}`,
@@ -64,8 +63,7 @@ class Persona {
         contenedor.appendChild(li);
       });
 
-      // Agregalo a algún contenedor visible del HTML, por ejemplo:
-      document.querySelector(".justify-content-start").appendChild(contenedor);
+      contenedorPadre.appendChild(contenedor);
     }
   }
 }
@@ -83,7 +81,7 @@ const tomarDatos = (e) => {
     document.querySelector("#añoDeNacimiento").value
   );
   // asignar inputs
-  personaCreada = new Persona(
+  const personaCreada = new Persona(
     nombre,
     edad,
     dni,
@@ -95,7 +93,7 @@ const tomarDatos = (e) => {
   // necesito tomar el texto (nombre) del input
   const inputNombre = document.getElementById("nombre").value;
   // necesito el div padre para agregar un item hijo que es una p
-  const div = document.querySelector(".justify-content-start");
+  const div = document.querySelector("#divPadre");
   // 🔧 Crear un contenedor específico para esta persona
   const contenedorPersona = document.createElement("div");
   contenedorPersona.classList.add("mb-3");
@@ -107,7 +105,7 @@ const tomarDatos = (e) => {
   // creo los eventos de manera dianamica
   boton1.addEventListener("click", () => personaCreada.mostrarGeneracion());
   boton2.addEventListener("click", () => personaCreada.esMayorDeEdad());
-  boton3.addEventListener("click", () => personaCreada.mostrarDatos());
+  boton3.addEventListener("click", () => personaCreada.mostrarDatos(contenedorPersona));
   // agrego el texto a la etiqueta p mas el nombre de la persona
   p.textContent = "👨‍👨‍👧‍👦Persona: " + inputNombre;
   // agrego texto a los botones
@@ -138,6 +136,5 @@ const esMayorDeEdad = () => {
 
 // variables
 const formulario = document.getElementById("miFormulario");
-let personaCreada;
 // manejador de eventos
 formulario.addEventListener(`submit`, tomarDatos);
